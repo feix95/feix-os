@@ -1,0 +1,194 @@
+<section id="work" class="work">
+  <div class="atlas-viewport">
+    <div class="atlas-track" id="atlas-track">
+      <article class="atlas-panel atlas-intro">
+        <p class="sec-tag mono">[02] SELECTED WORK — EP.01</p>
+        <h2 class="sec-title sec-title--stroke">CODE<br />ATLAS</h2>
+        <p class="atlas-cn">AI 代码地图 —— 给整个代码库装上导航和陪聊</p>
+        <ul class="work-feats mono">
+          <li>&gt; 168 个文件的树状地图，每一层都有人话摘要</li>
+          <li>&gt; 内置 AI 小探针：指着文件就能问，思考过程可见</li>
+          <li>&gt; 本地 9B 模型离线跑，代码不出门</li>
+          <li>&gt; 主题换肤 / 语气定制 / 文件关系连线</li>
+        </ul>
+        <div class="work-data mono">
+          <span>ENGINE: ELECTRON + TS</span>
+          <span>AI: LOCAL LLM 9B</span>
+          <span>STATUS: SHIPPED</span>
+        </div>
+        <a
+          class="btn-slice mono"
+          data-hover
+          href="https://github.com/feix95/code-atlas"
+          target="_blank"
+          rel="noopener"
+        >OPEN GITHUB ↗</a>
+      </article>
+
+      <figure class="atlas-panel shot">
+        <img src="/atlas/shot-01-probe.webp" alt="Atlas 小探针对话界面，展示 AI 的思考过程" width="2000" height="1498" loading="lazy" />
+        <figcaption class="mono">FIG.01 — ATLAS 小探针 // 思考过程可见</figcaption>
+      </figure>
+      <figure class="atlas-panel shot">
+        <img src="/atlas/shot-02-overview.webp" alt="文件概览页：函数统计、AI 提问建议与文件关系分析" width="2000" height="1498" loading="lazy" />
+        <figcaption class="mono">FIG.02 — 文件概览 // 选中即得的结构透视</figcaption>
+      </figure>
+      <figure class="atlas-panel shot">
+        <img src="/atlas/shot-03-preview.webp" alt="三分栏布局：文件树、AI 对话与带语法高亮的代码预览" width="2000" height="1498" loading="lazy" />
+        <figcaption class="mono">FIG.03 — 三栏工位 // 地图+对话+源码同屏</figcaption>
+      </figure>
+      <figure class="atlas-panel shot">
+        <img src="/atlas/shot-04-settings.webp" alt="设置页：昼夜主题、三套配色与 AI 语气定制" width="2000" height="1498" loading="lazy" />
+        <figcaption class="mono">FIG.04 — 换肤车间 // 配色与语气都可调</figcaption>
+      </figure>
+
+      <div class="atlas-panel atlas-end mono">
+        <p class="end-big">EP.01</p>
+        <p>— END —</p>
+        <p class="end-next">// MORE LOADING…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .work {
+    padding: var(--sec-pad) 0;
+  }
+  .atlas-viewport {
+    overflow: hidden;
+  }
+  .atlas-track {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(18px, 3vw, 44px);
+    padding: 0 var(--pad-x);
+    width: max-content;
+    will-change: transform;
+  }
+  .atlas-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    clip-path: polygon(
+      0 0,
+      calc(100% - 26px) 0,
+      100% 26px,
+      100% 100%,
+      26px 100%,
+      0 calc(100% - 26px)
+    );
+  }
+  .atlas-intro {
+    width: min(88vw, 620px);
+    padding: clamp(28px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sec-tag {
+    color: var(--acid);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .sec-title {
+    font-size: clamp(3.4rem, 8vw, 6.4rem);
+    line-height: 0.92;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--white);
+    text-transform: uppercase;
+  }
+  .atlas-cn {
+    margin-top: 18px;
+    font-weight: 900;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+  }
+  .work-feats {
+    list-style: none;
+    margin-top: 22px;
+    color: var(--grey);
+    font-size: 13px;
+    line-height: 2.15;
+  }
+  .work-feats li::marker {
+    content: "";
+  }
+  .work-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 26px;
+    margin-top: auto;
+    padding-top: 30px;
+    font-size: 11px;
+    color: var(--acid);
+  }
+  .btn-slice {
+    position: relative;
+    display: inline-block;
+    margin-top: 26px;
+    padding: 14px 30px;
+    background: var(--acid);
+    color: #000;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    transition: transform 0.15s ease;
+  }
+  .btn-slice:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--pink);
+  }
+  .shot {
+    width: min(78vw, 980px);
+    padding: 0 0 18px;
+  }
+  .shot img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--line);
+  }
+  .shot figcaption {
+    padding: 14px 18px 0;
+    color: var(--grey);
+    font-size: 12px;
+  }
+  .atlas-end {
+    width: min(60vw, 420px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--grey);
+    font-size: 13px;
+  }
+  .end-big {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--acid);
+    letter-spacing: 0.04em;
+  }
+  .end-next {
+    color: var(--white);
+  }
+
+  /* 移动端:关掉 JS 横向接管,改原生横滑 + 吸附 */
+  @media (max-width: 899px) {
+    .atlas-viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .atlas-viewport::-webkit-scrollbar {
+      display: none;
+    }
+    .atlas-panel {
+      scroll-snap-align: center;
+      flex: 0 0 auto;
+    }
+    .atlas-intro,
+    .shot {
+      width: min(86vw, 620px);
+    }
+  }
+</style>

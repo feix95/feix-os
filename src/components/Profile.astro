@@ -1,0 +1,140 @@
+<section id="profile" class="profile">
+  <header class="sec-head">
+    <p class="sec-tag mono">[04] OPERATOR FILE</p>
+    <h2 class="sec-title">作战员档案</h2>
+    <p class="sec-cn mono">// ACCESS GRANTED — LEVEL 0 CLEARANCE</p>
+  </header>
+
+  <div class="profile-body">
+    <dl class="op-file mono">
+      <div><dt>CODENAME</dt><dd>FEIX <i>/ 小葵</i></dd></div>
+      <div><dt>CLASS</dt><dd>ENGINEER × ILLUSTRATOR</dd></div>
+      <div><dt>WEAPONS</dt><dd>TYPESCRIPT / CLIP STUDIO / AI 协作流</dd></div>
+      <div><dt>AFFILIATION</dt><dd>INDEPENDENT — 自由&thinsp;且&thinsp;自洽</dd></div>
+      <div><dt>KNOWN ISSUES</dt><dd>凌晨三点还在改像素</dd></div>
+    </dl>
+
+    <div class="op-skills">
+      <div class="skill" data-level="8">
+        <span class="mono skill-name">CODE</span>
+        <span class="cells" aria-hidden="true"></span>
+        <b class="mono">08/12</b>
+      </div>
+      <div class="skill" data-level="10">
+        <span class="mono skill-name">ILLUSTRATION</span>
+        <span class="cells" aria-hidden="true"></span>
+        <b class="mono">10/12</b>
+      </div>
+      <div class="skill" data-level="11">
+        <span class="mono skill-name">AI COLLAB</span>
+        <span class="cells" aria-hidden="true"></span>
+        <b class="mono">11/12</b>
+      </div>
+      <div class="skill" data-level="7">
+        <span class="mono skill-name">SLEEP</span>
+        <span class="cells" aria-hidden="true"></span>
+        <b class="mono">07/12</b>
+      </div>
+    </div>
+
+    <p class="op-note">
+      白天造工具，晚上画猛男。相信 AI 是画笔不是替身——活儿是我的，AI
+      负责把手变长。
+    </p>
+  </div>
+</section>
+
+<style>
+  .profile {
+    padding: var(--sec-pad) 0;
+  }
+  .profile-body {
+    padding: 0 var(--pad-x);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(30px, 5vw, 80px);
+    align-items: start;
+  }
+  .op-file {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  }
+  .op-file > div {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12.5px;
+  }
+  .op-file > div:last-child {
+    border-bottom: 0;
+  }
+  .op-file dt {
+    color: var(--acid);
+  }
+  .op-file dd {
+    color: var(--white);
+  }
+  .op-file dd i {
+    font-style: normal;
+    color: var(--grey);
+  }
+  .op-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .skill {
+    display: grid;
+    grid-template-columns: 120px 1fr 56px;
+    align-items: center;
+    gap: 14px;
+  }
+  .skill-name {
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 0.12em;
+  }
+  .cells {
+    display: flex;
+    gap: 4px;
+  }
+  /* JS 动态生成的电量格,必须 :global 才能吃到 scoped 样式
+     初始 scaleX 交给 gsap.from 的 immediateRender,别在 CSS 写死,会互相抵消 */
+  .cells :global(i) {
+    flex: 1;
+    height: 16px;
+    background: var(--acid);
+    transform-origin: left;
+  }
+  .cells :global(i.off) {
+    background: transparent;
+    border: 1px solid var(--line);
+    transform: none;
+  }
+  .skill b {
+    font-size: 11px;
+    color: var(--acid);
+    text-align: right;
+    font-weight: 700;
+  }
+  .op-note {
+    grid-column: 1 / -1;
+    max-width: 560px;
+    border-left: 3px solid var(--acid);
+    padding-left: 20px;
+    color: var(--grey);
+    font-size: 15px;
+    line-height: 2;
+  }
+  @media (max-width: 860px) {
+    .profile-body {
+      grid-template-columns: 1fr;
+    }
+    .skill {
+      grid-template-columns: 96px 1fr 48px;
+    }
+  }
+</style>

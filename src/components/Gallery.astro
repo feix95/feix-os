@@ -1,0 +1,101 @@
+<section id="gallery" class="gallery">
+  <header class="sec-head">
+    <p class="sec-tag mono">[03] GALLERY</p>
+    <h2 class="sec-title">猛男系列</h2>
+    <p class="sec-cn mono">// 高饱和警告 — 以下内容含大量肌肉 — FANART ONLY</p>
+  </header>
+
+  <div class="gal-grid">
+    <figure class="gal-item" data-hover>
+      <img src="/art/art-hisoka.webp" alt="猎人×猎人 西索 同人插画" width="1600" height="2176" loading="lazy" />
+      <figcaption class="mono"><span>PIECE.01 — HISOKA</span><span class="tag">FANART // HUNTER×HUNTER</span></figcaption>
+    </figure>
+    <figure class="gal-item" data-hover>
+      <img src="/art/art-raian.webp" alt="拳愿阿修罗 吴雷庵 同人插画" width="1600" height="1399" loading="lazy" />
+      <figcaption class="mono"><span>PIECE.02 — RAIAN</span><span class="tag">FANART // KENGAN ASHURA</span></figcaption>
+    </figure>
+    <figure class="gal-item" data-hover>
+      <img src="/art/art-akaza-01.webp" alt="鬼灭之刃 猗窝座 同人插画" width="1600" height="1263" loading="lazy" />
+      <figcaption class="mono"><span>PIECE.03 — AKAZA</span><span class="tag">FANART // DEMON SLAYER</span></figcaption>
+    </figure>
+    <figure class="gal-item" data-hover>
+      <img src="/art/art-niren.webp" alt="戴 W 面具的厨师猛男 插画" width="1600" height="1872" loading="lazy" />
+      <figcaption class="mono"><span>PIECE.04 — MASKED CHEF</span><span class="tag">SOURCE: CLASSIFIED</span></figcaption>
+    </figure>
+    <figure class="gal-item" data-hover>
+      <img src="/art/art-akaza-02.webp" alt="鬼灭之刃 猗窝座 笑颜同人插画" width="1600" height="2133" loading="lazy" />
+      <figcaption class="mono"><span>PIECE.05 — AKAZA grin</span><span class="tag">FANART // DEMON SLAYER</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    padding: var(--sec-pad) 0;
+  }
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(16px, 2.6vw, 36px);
+    padding: 0 var(--pad-x);
+  }
+  .gal-item {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+  /* 黑场聚光:默认压灰,hover 复色 + 撕裂一瞬 */
+  .gal-item img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(1) contrast(1.08) brightness(0.72);
+    transition: filter 0.22s steps(3);
+  }
+  .gal-item:hover img {
+    filter: none;
+    animation: tear 0.24s steps(2);
+  }
+  @keyframes tear {
+    0% { clip-path: inset(0 0 0 0); translate: 0 0; }
+    30% { clip-path: inset(12% 0 46% 0); translate: -6px 0; }
+    60% { clip-path: inset(58% 0 8% 0); translate: 5px 0; }
+    100% { clip-path: inset(0 0 0 0); translate: 0 0; }
+  }
+  .gal-item figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--white);
+  }
+  .gal-item .tag {
+    color: var(--grey);
+  }
+  .gal-item:hover .tag {
+    color: var(--pink);
+  }
+  /* 第 2、4 张错位下沉,打破网格呆板 */
+  .gal-item:nth-child(2) {
+    translate: 0 clamp(20px, 4vw, 56px);
+  }
+  .gal-item:nth-child(4) {
+    translate: 0 clamp(20px, 4vw, 56px);
+  }
+  @media (max-width: 720px) {
+    .gal-grid {
+      grid-template-columns: 1fr;
+    }
+    .gal-item:nth-child(2),
+    .gal-item:nth-child(4) {
+      translate: 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gal-item img {
+      filter: none;
+    }
+  }
+</style>

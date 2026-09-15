@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import "@fontsource/anton";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/700.css";
+import Boot from "../components/Boot.astro";
+import Hud from "../components/Hud.astro";
+import Hero from "../components/Hero.astro";
+import Work from "../components/Work.astro";
+import Gallery from "../components/Gallery.astro";
+import Profile from "../components/Profile.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FEIX — 写代码，也画猛男</title>
+    <meta
+      name="description"
+      content="FEIX 的个人系统:独立开发者 × 插画师。代表作 CodeAtlas(AI 代码地图),兼画高饱和猛男同人。"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#060606" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <Boot />
+    <Hud />
+    <div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+    <div id="glash" aria-hidden="true"></div>
+    <p class="overdrive-toast">⚠ OVERDRIVE ENGAGED — 系统失控中</p>
+
+    <main>
+      <Hero />
+      <Work />
+      <Gallery />
+      <Profile />
+      <Contact />
+    </main>
+    <Footer />
+
+    <script>
+      import "../scripts/main";
+    </script>
+  </body>
+</html>

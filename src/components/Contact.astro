@@ -1,0 +1,122 @@
+<section id="contact" class="contact">
+  <header class="sec-head">
+    <p class="sec-tag mono">[05] TRANSMISSION</p>
+    <h2 class="sec-title">通讯频道</h2>
+    <p class="sec-cn mono">// PICK A CHANNEL — RESPONSE TIME: &lt; 24H</p>
+  </header>
+
+  <nav class="tx-list">
+    <a
+      class="tx-row"
+      data-hover
+      href="https://www.xiaohongshu.com/user/profile/609a3c2f000000000100b606"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="tx-idx mono">CH.01</span>
+      <span class="tx-name">小红书</span>
+      <span class="tx-url mono">XIAOHONGSHU.COM</span>
+      <span class="tx-arr" aria-hidden="true">↗</span>
+    </a>
+    <a class="tx-row" data-hover href="https://x.com/Zomfeix" target="_blank" rel="noopener">
+      <span class="tx-idx mono">CH.02</span>
+      <span class="tx-name">X / TWITTER</span>
+      <span class="tx-url mono">@ZOMFEIX</span>
+      <span class="tx-arr" aria-hidden="true">↗</span>
+    </a>
+    <a class="tx-row" data-hover href="https://github.com/feix95/code-atlas" target="_blank" rel="noopener">
+      <span class="tx-idx mono">CH.03</span>
+      <span class="tx-name">GITHUB</span>
+      <span class="tx-url mono">FEIX95/CODE-ATLAS</span>
+      <span class="tx-arr" aria-hidden="true">↗</span>
+    </a>
+    <a class="tx-row" data-hover href="mailto:Zomfeix@gmail.com">
+      <span class="tx-idx mono">CH.04</span>
+      <span class="tx-name">MAIL</span>
+      <span class="tx-url mono">ZOMFEIX@GMAIL.COM</span>
+      <span class="tx-arr" aria-hidden="true">↗</span>
+    </a>
+  </nav>
+</section>
+
+<style>
+  .contact {
+    padding: var(--sec-pad) 0;
+  }
+  .tx-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .tx-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 70px 1fr auto 60px;
+    align-items: center;
+    gap: 18px;
+    padding: clamp(20px, 3.4vh, 34px) var(--pad-x);
+    border-top: 1px solid var(--line);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .tx-list .tx-row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  /* 切割式 hover:酸绿硬切进场 */
+  .tx-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--acid);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.22s cubic-bezier(0.85, 0, 0.15, 1);
+  }
+  .tx-row:hover::before,
+  .tx-row:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .tx-idx {
+    font-size: 12px;
+    color: var(--acid);
+  }
+  .tx-name {
+    font-weight: 900;
+    font-size: clamp(1.7rem, 5.4vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    transition: color 0.18s steps(3), translate 0.22s cubic-bezier(0.85, 0, 0.15, 1);
+  }
+  .tx-url {
+    font-size: 12px;
+    color: var(--grey);
+    transition: color 0.18s steps(3);
+  }
+  .tx-arr {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    text-align: right;
+    transition: translate 0.22s cubic-bezier(0.85, 0, 0.15, 1);
+  }
+  .tx-row:hover .tx-name,
+  .tx-row:hover .tx-idx,
+  .tx-row:hover .tx-url,
+  .tx-row:hover .tx-arr,
+  .tx-row:focus-visible .tx-name,
+  .tx-row:focus-visible .tx-url {
+    color: #000;
+  }
+  .tx-row:hover .tx-name {
+    translate: 14px 0;
+  }
+  .tx-row:hover .tx-arr {
+    translate: 8px -6px;
+  }
+  @media (max-width: 720px) {
+    .tx-row {
+      grid-template-columns: 48px 1fr 40px;
+    }
+    .tx-url {
+      display: none;
+    }
+  }
+</style>

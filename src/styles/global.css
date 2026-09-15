@@ -1,0 +1,259 @@
+/* ============================================================
+   FEIX.OS — 全局设计系统
+   酸绿 × 纯黑 × 高饱和撞色 | Marathon × LDR 语言
+   ============================================================ */
+
+:root {
+  --black: #060606;
+  --panel: #0c0c0c;
+  --acid: #c8ff2e;
+  --blue: #2e5bff;
+  --pink: #ff2e88;
+  --white: #f4f4f0;
+  --grey: #85857d;
+  --line: rgba(244, 244, 240, 0.14);
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-cn: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  --font-mono: "JetBrains Mono", "Consolas", monospace;
+
+  --pad-x: clamp(18px, 4vw, 56px);
+  --sec-pad: clamp(96px, 14vh, 170px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--black);
+  scroll-behavior: smooth;
+}
+
+/* 开机自检期间锁滚动(JS 挂 is-booting 类) */
+html.is-booting {
+  overflow: hidden;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-cn);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 全站细网格底纹 —— 装在黑舱里的坐标纸 */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(244, 244, 240, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 244, 240, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: var(--acid);
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--acid);
+  border: 3px solid var(--black);
+}
+
+:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 自定义准星光标(仅精确指针设备) ---------- */
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor [data-hover] {
+    cursor: none;
+  }
+}
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 110;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  pointer-events: none;
+  display: none;
+}
+html.has-cursor .cursor {
+  display: block;
+}
+.cursor::before,
+.cursor::after {
+  content: "";
+  position: absolute;
+  background: var(--acid);
+}
+/* 十字线 */
+.cursor::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-0.5px);
+}
+.cursor::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  transform: translateY(-0.5px);
+}
+.cursor span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--acid);
+  border-radius: 50%;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.cursor.is-hover span {
+  transform: translate(-50%, -50%) scale(1.7) rotate(45deg);
+  border-color: var(--pink);
+}
+
+/* ---------- 通用章节头 ---------- */
+.sec-head {
+  padding: 0 var(--pad-x);
+  margin-bottom: clamp(40px, 6vh, 72px);
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.sec-tag {
+  color: var(--acid);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.sec-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.sec-title--stroke {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--white);
+}
+.sec-cn {
+  margin-top: 14px;
+  color: var(--grey);
+  font-size: 15px;
+}
+
+/* ---------- 科乐美彩蛋:失控模式 ---------- */
+#glash {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(200, 255, 46, 0.06) 0 2px,
+    transparent 2px 5px
+  );
+}
+html.overdrive #glash {
+  animation: glash-flick 0.28s steps(2) infinite;
+}
+html.overdrive .ht-text {
+  animation: glitch-jump 0.2s steps(2) infinite;
+}
+html.overdrive .gal-item img {
+  animation: glitch-jump 0.24s steps(2) infinite;
+}
+@keyframes glash-flick {
+  0% { opacity: 0.9; }
+  50% { opacity: 0.2; }
+  100% { opacity: 0.7; }
+}
+@keyframes glitch-jump {
+  0% { translate: 0 0; }
+  33% { translate: -5px 2px; }
+  66% { translate: 4px -3px; }
+  100% { translate: 0 0; }
+}
+.overdrive-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 8vh;
+  transform: translateX(-50%);
+  z-index: 95;
+  background: var(--pink);
+  color: #000;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 10px 22px;
+  opacity: 0;
+  pointer-events: none;
+}
+html.overdrive .overdrive-toast {
+  opacity: 1;
+}
+
+/* ---------- 减弱动效:全局兜底 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-inner {
+    animation: none !important;
+  }
+  html.overdrive #glash,
+  html.overdrive .ht-text,
+  html.overdrive .gal-item img {
+    animation: none !important;
+  }
+}

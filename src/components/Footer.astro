@@ -1,0 +1,44 @@
+<footer class="footer">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>SEE YOU IN THE GRID — EOF — FEIX.OS — 写代码，也画猛男 —&nbsp;</span>
+      <span>SEE YOU IN THE GRID — EOF — FEIX.OS — 写代码，也画猛男 —&nbsp;</span>
+    </div>
+  </div>
+  <p class="foot-meta mono">© 2026 ZOMFEIX — BUILT WITH ASTRO + GSAP — HOSTED ON CLOUDFLARE</p>
+</footer>
+
+<style>
+  .footer {
+    padding-bottom: 30px;
+  }
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  .marquee-inner {
+    display: flex;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-inner span {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    white-space: nowrap;
+    color: var(--acid);
+    letter-spacing: 0.05em;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .foot-meta {
+    padding: 22px var(--pad-x) 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--grey);
+  }
+</style>

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+
+// 个人参考资料(含私人信息),绝不入库
+ref/
+
+.DS_Store

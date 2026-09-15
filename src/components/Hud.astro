@@ -1,0 +1,105 @@
+{/* 常驻 HUD:顶栏 / 四角取景框 / 左侧竖排铭牌 / 底部滚动进度 */}
+<div class="hud" aria-hidden="true">
+  <header class="hud-top">
+    <span class="hud-brand">FEIX<i>.OS</i></span>
+    <span class="hud-status mono"><i class="dot"></i>ONLINE</span>
+  </header>
+  <span class="hud-corner c-tl"></span>
+  <span class="hud-corner c-tr"></span>
+  <span class="hud-corner c-bl"></span>
+  <span class="hud-corner c-br"></span>
+  <span class="hud-side mono">ZOMFEIX — PERSONAL SYSTEM — EST.2026</span>
+  <div class="hud-progress mono">
+    <i id="hud-bar"></i>
+    <span id="hud-pct">000%</span>
+  </div>
+</div>
+
+<style>
+  .hud {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .hud-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px var(--pad-x);
+    background: linear-gradient(rgba(6, 6, 6, 0.85), rgba(6, 6, 6, 0));
+  }
+  .hud-brand {
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+  }
+  .hud-brand i {
+    font-style: normal;
+    color: var(--acid);
+  }
+  .hud-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--acid);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--acid);
+    border-radius: 50%;
+    animation: blink 1.6s steps(2) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0.15; }
+  }
+  .hud-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 0 solid var(--acid);
+  }
+  .c-tl { top: 52px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
+  .c-tr { top: 52px; right: 12px; border-top-width: 1px; border-right-width: 1px; }
+  .c-bl { bottom: 52px; left: 12px; border-bottom-width: 1px; border-left-width: 1px; }
+  .c-br { bottom: 52px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+  .hud-side {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--grey);
+  }
+  .hud-progress {
+    position: absolute;
+    left: var(--pad-x);
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--acid);
+  }
+  .hud-progress i {
+    display: block;
+    width: 120px;
+    height: 6px;
+    background: var(--acid);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  @media (max-width: 720px) {
+    .hud-side { display: none; }
+    .hud-progress i { width: 72px; }
+  }
+</style>

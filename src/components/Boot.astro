@@ -1,0 +1,87 @@
+{/* 开机自检覆盖层 —— 纯黑双舱门 + 等宽字自检 + HP 进度条 */}
+<div id="boot" class="boot" aria-hidden="true">
+  <div class="boot-half boot-half--t"></div>
+  <div class="boot-half boot-half--b"></div>
+  <div class="boot-core">
+    <p class="boot-head mono">FEIX.OS v1.0 — BOOT SEQUENCE</p>
+    <div class="boot-lines mono" id="boot-lines"></div>
+    <div class="boot-bar"><i id="boot-fill"></i></div>
+    <p class="boot-skip mono">CLICK TO SKIP ▸▸</p>
+  </div>
+</div>
+<noscript><style>#boot { display: none; }</style></noscript>
+
+<style>
+  .boot {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+  }
+  .boot-half {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50.5%;
+    background: var(--black);
+    will-change: transform;
+  }
+  .boot-half--t {
+    top: 0;
+    border-bottom: 1px solid var(--acid);
+  }
+  .boot-half--b {
+    bottom: 0;
+    border-top: 1px solid var(--acid);
+  }
+  .boot-core {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--pad-x);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .boot-head {
+    color: var(--white);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    margin-bottom: 22px;
+  }
+  .boot-lines {
+    color: var(--acid);
+    font-size: 13px;
+    line-height: 2.1;
+    min-height: 10.5em;
+  }
+  /* JS 动态注入的行,必须 :global 才能吃到 scoped 样式 */
+  .boot-lines :global(div) {
+    color: var(--acid);
+  }
+  .boot-lines :global(div)::before {
+    content: "> ";
+    color: var(--grey);
+  }
+  .boot-lines :global(div.ok)::after {
+    content: " OK";
+    color: var(--white);
+  }
+  .boot-bar {
+    margin-top: 26px;
+    height: 10px;
+    border: 1px solid var(--line);
+    padding: 2px;
+  }
+  .boot-bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--acid);
+  }
+  .boot-skip {
+    margin-top: 14px;
+    color: var(--grey);
+    font-size: 11px;
+  }
+</style>
