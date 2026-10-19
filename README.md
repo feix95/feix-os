@@ -4,7 +4,7 @@
 
 个人网站:独立开发者 × 插画师。展示代表作 [CodeAtlas](https://github.com/feix95/code-atlas)(AI 代码地图)与高饱和猛男同人插画。
 
-**线上地址**:https://feix.zomfeix.com
+**线上地址**: https://zomfeix.com/
 
 ## 技术栈
 
