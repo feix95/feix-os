@@ -153,10 +153,29 @@ function initWire() {
 }
 initWire();
 
+/* ---------------- 档案电量槽:按 data-level 建出 12 格 ----------------
+   matchMedia 条件变化时会重跑,必须先清空再建,否则格子会越叠越多
+   减弱动效分支也要用,所以提到模块层 */
+function buildSkillCells(skill: HTMLElement): HTMLElement | null {
+  const cellsEl = skill.querySelector<HTMLElement>(".cells");
+  if (!cellsEl) return null;
+  const level = Number(skill.dataset.level || 0);
+  cellsEl.replaceChildren();
+  for (let i = 0; i < 12; i++) {
+    const cell = document.createElement("i");
+    if (i >= level) cell.className = "off";
+    cellsEl.appendChild(cell);
+  }
+  return cellsEl;
+}
+
 /* ---------------- 滚动章节:全部按页面顺序创建 ---------------- */
 mm.add(
   {
+    // gsap.matchMedia 的条件对象:只有当至少一个条件命中时回调才会执行
+    // isDesktop + isMobile 必须覆盖全部宽度,否则窄屏(手机)下整块设置永远不跑
     isDesktop: "(min-width: 900px)",
+    isMobile: "(max-width: 899px)",
     reduceMotion: "(prefers-reduced-motion: reduce)",
   },
   (ctx) => {
@@ -201,13 +220,8 @@ mm.add(
 
       /* 档案电量槽:一格一格拍进去 */
       document.querySelectorAll<HTMLElement>(".skill").forEach((skill) => {
-        const level = Number(skill.dataset.level || 0);
-        const cellsEl = skill.querySelector<HTMLElement>(".cells")!;
-        for (let i = 0; i < 12; i++) {
-          const cell = document.createElement("i");
-          if (i >= level) cell.className = "off";
-          cellsEl.appendChild(cell);
-        }
+        const cellsEl = buildSkillCells(skill);
+        if (!cellsEl) return;
         gsap.from(cellsEl.querySelectorAll("i:not(.off)"), {
           scaleX: 0,
           stagger: 0.05,
@@ -240,15 +254,7 @@ mm.add(
     } else {
       /* 减弱动效:直接呈现终态 */
       document.getElementById("hud-pct")!.textContent = "";
-      document.querySelectorAll<HTMLElement>(".skill").forEach((skill) => {
-        const level = Number(skill.dataset.level || 0);
-        const cellsEl = skill.querySelector<HTMLElement>(".cells")!;
-        for (let i = 0; i < 12; i++) {
-          const cell = document.createElement("i");
-          if (i >= level) cell.className = "off";
-          cellsEl.appendChild(cell);
-        }
-      });
+      document.querySelectorAll<HTMLElement>(".skill").forEach(buildSkillCells);
     }
   }
 );
